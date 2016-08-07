@@ -1,19 +1,21 @@
 #!/bin/bash
 
-readonly RAND_PLAYLIST_FILE="playlist_rand.txt"
+. ./settings/playlistdir.sh
+
+readonly RAND_PLAYLIST_FILE="${PLAYLIST_DIR}/playlist_rand.txt"
 
 if [ $# -gt 1 ]; then
 	echo "usage: $0  OR  $0 --update"
 	exit 1
 elif [ $# -eq 1 ] && [ "$1" == "--update" ]; then
-	python get_youtube_playlist.py > playlist.json
+	python get_youtube_playlist.py > ${PLAYLIST_DIR}/playlist.json
 fi
 
 if [ -e ${RAND_PLAYLIST_FILE} ]; then
 	rm ${RAND_PLAYLIST_FILE}
 fi
 
-playlist=`cat playlist.json`
+playlist=`cat ${PLAYLIST_DIR}/playlist.json`
 max_length=$( echo ${playlist} | jq 'length' )
 length=${max_length}
 for i in `seq 1 ${max_length}` ; do

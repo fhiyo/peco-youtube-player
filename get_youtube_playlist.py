@@ -10,8 +10,9 @@ from apiclient.discovery import build
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.file import Storage
 from oauth2client.tools import argparser, run_flow
+from settings.MyPlaylistId import my_playlist_id
 
-MY_PLAYLIST_ID = "PLdrDXAFDBAgozp9ts88xYpRz0PXB1W1N8"
+SETTINGS_PATH = "settings"
 MAX_RESULT = 50
 CLIENT_SECRETS_FILE = os.path.join(os.path.expanduser("~"), ".config/googleapi/youtube/client_secrets.json")
 
@@ -31,6 +32,7 @@ https://console.developers.google.com/
 For more information about the client_secrets.json file format, please visit:
 https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
 """ % os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                   SETTINGS_PATH,
                                    CLIENT_SECRETS_FILE))
 
 # This OAuth 2.0 access scope allows for read-only access to the authenticated
@@ -44,7 +46,7 @@ def get_youtube_playlist():
       message=MISSING_CLIENT_SECRETS_MESSAGE,
       scope=YOUTUBE_READONLY_SCOPE)
 
-    storage = Storage("%s-oauth2.json" % sys.argv[0])
+    storage = Storage(os.path.join(SETTINGS_PATH, "%s-oauth2.json" % sys.argv[0]))
     credentials = storage.get()
 
     if credentials is None or credentials.invalid:
@@ -58,7 +60,7 @@ def get_youtube_playlist():
     # authenticated user's playlist.
     playlists_response = youtube.playlistItems().list(
       part="snippet",
-      playlistId=MY_PLAYLIST_ID,
+      playlistId=my_playlist_id,
       maxResults=MAX_RESULT,
     ).execute()
 
@@ -74,7 +76,7 @@ def get_youtube_playlist():
     while nextPageToken is not None:
         playlists_response = youtube.playlistItems().list(
                 part="snippet",
-                playlistId=MY_PLAYLIST_ID,
+                playlistId=my_playlist_id,
                 maxResults=MAX_RESULT,
                 pageToken=nextPageToken,
                 ).execute()

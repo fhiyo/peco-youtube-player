@@ -13,14 +13,14 @@ youtube APIが使えるようAPIキーを取得している必要がある．
 ## how to use
 
 ```sh
-git clone git@gist.github.com:3aea7faa2ebf78ee9a560248a6ee07b7.git
+git clone https://github.com/fhiyo/youtube_myPlayList
 ```
 
-でcloneした後，get\_youtube\_playlist.pyのMY\_PLAYLIST\_IDを自分のプレイリストのIDに変更して
+でcloneした後，settings/MyPlaylistId.pyのmy\_playlist\_idの値をを自分のプレイリストのIDに変更して
 play.shかrandomContainuousPlayback.shを実行する．
 
 
-### 使用しているソフトウェア
+## 使用しているソフトウェア
 - peco
 - mpv
 
