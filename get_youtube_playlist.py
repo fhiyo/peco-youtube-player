@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-# TODO: transfer video title to peco to select from it
-#       add function of auto play
-
 import httplib2
 import os
 import sys
