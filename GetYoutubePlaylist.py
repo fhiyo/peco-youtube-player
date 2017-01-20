@@ -80,7 +80,7 @@ def get_youtube_playlist():
                 maxResults=MAX_RESULT,
                 pageToken=nextPageToken,
                 ).execute()
-        if playlists_response.has_key("nextPageToken"):
+        if "nextPageToken" in playlists_response:
             nextPageToken = playlists_response["nextPageToken"]
         else:
             nextPageToken = None
@@ -93,7 +93,7 @@ def get_youtube_playlist():
     return json.dumps(myPlayListInfo)
 
 def main():
-    print get_youtube_playlist()
+    print(get_youtube_playlist())
 
 if __name__ == '__main__':
     main()
