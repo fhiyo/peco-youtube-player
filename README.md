@@ -19,7 +19,7 @@ git clone git@github.com:fhiyo/peco-youtube-player.git
 でcloneした後，`settings/MyPlaylistId.py`を作成し，
 ` my_playlist_id = "<自分のプレイリストのid>"`
 を記述する．
-保存して終了後，play.shかrandomContainuousPlayback.shを実行する．
+保存して終了後，play.shかrandom_containuous_playback.shを実行する．
 
 プレイリストを更新したとき，
 `./play.sh --update`のように`--update`のオプションをつけて

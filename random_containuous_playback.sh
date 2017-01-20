@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./settings/playlistdir.sh
+. ./settings/playlist_dir.sh
 
 readonly RAND_PLAYLIST_FILE="${PLAYLIST_DIR}/playlist_rand.txt"
 
@@ -8,7 +8,7 @@ if [ $# -gt 1 ]; then
 	echo "usage: $0  OR  $0 --update"
 	exit 1
 elif [ $# -eq 1 ] && [ "$1" == "--update" ]; then
-	python get_youtube_playlist.py > ${PLAYLIST_DIR}/playlist.json
+	python GetYoutubePlaylist.py > ${PLAYLIST_DIR}/playlist.json
 fi
 
 if [ -e ${RAND_PLAYLIST_FILE} ]; then

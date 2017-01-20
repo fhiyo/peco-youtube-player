@@ -94,5 +94,5 @@ ENV/
 
 # Specific settings of this repo
 playlist/
-settings/get_youtube_playlist.py-oauth2.json
+settings/*.py-oauth2.json
 settings/MyPlaylistId.py
